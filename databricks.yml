@@ -13,10 +13,24 @@ targets:
   dev:
     mode: development
     default: true
+    variables:
+      environment: dev
     workspace:
-      host: https://YOUR-DEV-WORKSPACE-URL
+      host: https://dbc-52162e44-aeeb.cloud.databricks.com/
+      profile: slp
+      root_path: /Workspace/Users/shubhamlpatil22@gmail.com/DEV/.bundle/DAB_Project
+    permissions:
+      - user_name: shubhamlpatil22@gmail.com
+        level: CAN_MANAGE
 
   qa:
     mode: production
+    variables:
+      environment: qa
     workspace:
-      host: https://YOUR-QA-WORKSPACE-URL
+      host: https://dbc-8e3d59e6-4e72.cloud.databricks.com
+      profile: vsp
+      root_path: /Workspace/Users/vanshikabirade23@gmail.com/QA/.bundle/DAB_Project
+    permissions:
+      - user_name: vanshikabirade23@gmail.com
+        level: CAN_MANAGE

@@ -21,7 +21,7 @@ def main():
         .withColumn("processed_timestamp", current_timestamp())
     )
 
-    result_df.write         .format("delta")         .mode("overwrite")         .saveAsTable("customer_bronze")
+    result_df.write.format("delta").mode("overwrite").saveAsTable("customer_bronze")
 
     print("Customer ingestion completed successfully")
 
