@@ -1,0 +1,15 @@
+resources:
+  jobs:
+    customer_ingestion_job:
+      name: customer_ingestion_${var.environment}
+
+      tasks:
+        - task_key: ingest_customer
+
+          spark_python_task:
+            python_file: ../src/customer_ingestion.py
+
+          new_cluster:
+            spark_version: "14.3.x-scala2.12"
+            node_type_id: "i3.xlarge"
+            num_workers: 1

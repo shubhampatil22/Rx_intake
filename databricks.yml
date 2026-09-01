@@ -1,0 +1,22 @@
+bundle:
+  name: my-databricks-project
+
+include:
+  - resources/*.yml
+
+variables:
+  environment:
+    description: Environment name
+    default: dev
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://YOUR-DEV-WORKSPACE-URL
+
+  qa:
+    mode: production
+    workspace:
+      host: https://YOUR-QA-WORKSPACE-URL
