@@ -5,10 +5,15 @@ from pyspark.sql.functions import current_timestamp, lit
 def main():
     spark = SparkSession.builder.getOrCreate()
 
+    # data = [
+    #     (1, "Rahul", "rahul@test.com"),
+    #     (2, "Amit", "amit@test.com"),
+    #     (3, "Priya", "priya@test.com")
+    # ]
+
     data = [
-        (1, "Rahul", "rahul@test.com"),
-        (2, "Amit", "amit@test.com"),
-        (3, "Priya", "priya@test.com")
+            (4, "Shubham", "shubham@test.com"),
+            (5, "Neel", "neel@test.com")
     ]
 
     columns = ["customer_id", "customer_name", "email"]
@@ -21,7 +26,7 @@ def main():
         .withColumn("processed_timestamp", current_timestamp())
     )
 
-    result_df.write.format("delta").mode("overwrite").saveAsTable("customer_bronze")
+    result_df.write.format("delta").mode("append").saveAsTable("customer_bronze")
 
     print("Customer ingestion completed successfully")
 
