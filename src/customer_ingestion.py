@@ -12,8 +12,8 @@ def main():
     # ]
 
     data = [
-            (4, "Shubham", "shubham@test.com"),
-            (5, "Neel", "neel@test.com")
+            (6, "Ramesh", "ramesh@test.com"),
+            (7, "Suresh", "suresh@test.com")
     ]
 
     columns = ["customer_id", "customer_name", "email"]
