@@ -51,16 +51,16 @@ def main():
         )
     )
 
-    (
+    query = (
         raw_df.writeStream
         .format("delta")
         .outputMode("append")
         .option("checkpointLocation", checkpoint)
-        .trigger(processingTime=cfg["streaming"]["trigger_interval"])
+        .trigger(availableNow=True)
         .toTable(raw_table)
     )
 
-    spark.streams.awaitAnyTermination()
+    query.awaitTermination()
 
 
 if __name__ == "__main__":

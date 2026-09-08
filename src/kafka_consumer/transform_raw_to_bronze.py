@@ -143,16 +143,16 @@ def main():
               "headers_json", "kafka_timestamp_type", "_ingested_at")
     )
 
-    (
+    query = (
         bronze_df.writeStream
         .format("delta")
         .outputMode("append")
         .option("checkpointLocation", checkpoint)
-        .trigger(processingTime=cfg["streaming"]["trigger_interval"])
+        .trigger(availableNow=True)
         .toTable(bronze_table)
     )
 
-    spark.streams.awaitAnyTermination()
+    query.awaitTermination()
 
 
 if __name__ == "__main__":

@@ -13,7 +13,6 @@
     "bronze": "dab_catalog.bronze.audit_outbox"
   },
   "streaming": {
-    "trigger_interval": "30 seconds",
     "checkpoint_base": "/Volumes/dab_catalog/bronze/checkpoints"
   }
 }
