@@ -1,0 +1,41 @@
+resources:
+  jobs:
+    audit_outbox_ingest_raw_job:
+      name: audit_outbox_ingest_raw_${var.environment}
+      environments:
+        - environment_key: serverless_env
+          spec:
+            client: "2"
+      tasks:
+        - task_key: ingest_raw
+          environment_key: serverless_env
+          spark_python_task:
+            python_file: ../src/kafka_consumer/ingest_raw.py
+            parameters:
+              - "--env"
+              - "${var.environment}"
+          libraries:
+            - pypi:
+                package: fastavro
+            - pypi:
+                package: requests
+
+    audit_outbox_transform_raw_to_bronze_job:
+      name: audit_outbox_transform_raw_to_bronze_${var.environment}
+      environments:
+        - environment_key: serverless_env
+          spec:
+            client: "2"
+      tasks:
+        - task_key: transform_raw_to_bronze
+          environment_key: serverless_env
+          spark_python_task:
+            python_file: ../src/kafka_consumer/transform_raw_to_bronze.py
+            parameters:
+              - "--env"
+              - "${var.environment}"
+          libraries:
+            - pypi:
+                package: fastavro
+            - pypi:
+                package: requests

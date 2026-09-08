@@ -1,0 +1,22 @@
+# Secrets — never commit real .env files
+conf/*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+# Databricks local state
+.databricks/bundle/*/sync-snapshots/
+.databricks/.databricks.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
