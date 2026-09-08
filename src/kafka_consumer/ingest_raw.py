@@ -28,7 +28,6 @@ def main():
     cfg = load_config(environment)
 
     spark = SparkSession.builder.getOrCreate()
-    spark.sparkContext.setLogLevel("WARN")
 
     kafka_options = build_kafka_options(cfg)
     raw_table = cfg["tables"]["raw"]

@@ -97,7 +97,6 @@ def main():
     cfg = load_config(environment)
 
     spark = SparkSession.builder.getOrCreate()
-    spark.sparkContext.setLogLevel("WARN")
 
     raw_table    = cfg["tables"]["raw"]
     bronze_table = cfg["tables"]["bronze"]
