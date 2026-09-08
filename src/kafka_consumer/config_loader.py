@@ -77,4 +77,5 @@ def build_kafka_options(cfg: dict) -> dict:
             f'username="{kafka["sasl_username"]}" '
             f'password="{kafka["sasl_password"]}";'
         ),
+        "includeHeaders": "true",
     }
