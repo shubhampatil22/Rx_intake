@@ -13,8 +13,12 @@ from pathlib import Path
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, current_timestamp, to_json
 
-# Allow importing sibling modules when run as spark_python_task
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+# __file__ is not defined in Databricks exec() context; fall back to sys.argv[0]
+try:
+    _src = str(Path(__file__).resolve().parents[1])
+except NameError:
+    _src = str(Path(sys.argv[0]).resolve().parent.parent)
+sys.path.insert(0, _src)
 
 from kafka_consumer.config_loader import build_kafka_options, load_config
 
