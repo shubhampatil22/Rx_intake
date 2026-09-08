@@ -1,0 +1,19 @@
+{
+  "kafka": {
+    "bootstrap_servers": "pkc-921jm.us-east-2.aws.confluent.cloud:9092",
+    "security_protocol": "SASL_SSL",
+    "sasl_mechanisms": "PLAIN",
+    "topic": "kafka_topic"
+  },
+  "schema_registry": {
+    "url": "https://psrc-mw731.us-east-2.aws.confluent.cloud"
+  },
+  "tables": {
+    "raw": "dab_catalog.bronze.audit_outbox_inbound",
+    "bronze": "dab_catalog.bronze.audit_outbox"
+  },
+  "streaming": {
+    "trigger_interval": "30 seconds",
+    "checkpoint_base": "/Volumes/dab_catalog/bronze/checkpoints"
+  }
+}
